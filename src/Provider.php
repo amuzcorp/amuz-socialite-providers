@@ -23,7 +23,7 @@ class Provider extends AbstractProvider implements ProviderInterface
      */
     protected function getAuthUrl($state)
     {
-        return $this->buildAuthUrlFromBase(config('services.amuz.base_url') . '/oauth/authorize', $state);
+        return $this->buildAuthUrlFromBase('https://amuz.co.kr/oauth/authorize', $state);
     }
 
     /**
@@ -31,7 +31,7 @@ class Provider extends AbstractProvider implements ProviderInterface
      */
     protected function getTokenUrl()
     {
-        return config('services.amuz.base_url') . '/oauth/token';
+        return 'https://amuz.co.kr/oauth/token';
     }
 
     /**
@@ -39,7 +39,7 @@ class Provider extends AbstractProvider implements ProviderInterface
      */
     protected function getUserByToken($token)
     {
-        $response = $this->getHttpClient()->get(config('services.amuz.base_url') . '/api/user', [
+        $response = $this->getHttpClient()->get('https://amuz.co.kr/api/user', [
             'headers' => [
                 'Authorization' => 'Bearer ' . $token,
                 'Accept' => 'application/json',
