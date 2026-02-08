@@ -2,11 +2,10 @@
 
 namespace SocialiteProviders\Amuz;
 
-use Laravel\Socialite\Two\AbstractProvider;
-use Laravel\Socialite\Two\ProviderInterface;
+use SocialiteProviders\Manager\OAuth2\AbstractProvider;
 use SocialiteProviders\Manager\OAuth2\User;
 
-class Provider extends AbstractProvider implements ProviderInterface
+class Provider extends AbstractProvider
 {
     /**
      * Unique Provider Identifier.
@@ -57,13 +56,20 @@ class Provider extends AbstractProvider implements ProviderInterface
         // The user data is nested under 'user' key based on the sample
         $data = $user['user'] ?? $user;
 
-        return (new \SocialiteProviders\Amuz\User)->setRaw($user)->map([
+        return (new User)->setRaw($user)->map([
             'id' => $data['id'],
             'nickname' => $data['name'],
             'name' => $data['name'],
             'email' => $data['email'],
             'avatar' => $data['profile_photo_url'],
-            'amuz_uuid' => $data['id'],
         ]);
+    }
+
+    /**
+     * Additional configuration keys.
+     */
+    public static function additionalConfigKeys(): array
+    {
+        return ['base_url'];
     }
 }

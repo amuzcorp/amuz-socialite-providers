@@ -1,11 +1,12 @@
 {
     "name": "socialiteproviders/amuz",
     "description": "Amuz OAuth2 Provider for Laravel Socialite",
+    "version": "1.0.0",
     "license": "MIT",
     "authors": [
         {
-            "name": "Amuz Corp",
-            "email": "dev@amuz.co.kr"
+            "name": "xiso",
+            "email": "ceo@amuz.co.kr"
         }
     ],
     "require": {
