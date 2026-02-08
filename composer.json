@@ -1,0 +1,27 @@
+{
+    "name": "socialiteproviders/amuz",
+    "description": "Amuz OAuth2 Provider for Laravel Socialite",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Amuz Corp",
+            "email": "dev@amuz.co.kr"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "socialiteproviders/manager": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SocialiteProviders\\Amuz\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SocialiteProviders\\Amuz\\AmuzSocialiteServiceProvider"
+            ]
+        }
+    }
+}
