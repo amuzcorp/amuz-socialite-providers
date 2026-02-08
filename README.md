@@ -1,10 +1,10 @@
 # Amuz Socialite Provider
 
-This package provides Amuz OAuth 2.0 support for Laravel Socialite.
+이 패키지는 Laravel Socialite를 위한 Amuz OAuth 2.0 지원을 제공합니다.
 
-## Installation
+## 설치 (Installation)
 
-Add the repository to your `composer.json` (until it is published on Packagist):
+`composer.json`에 저장소를 추가하세요 (Packagist에 게시되기 전까지):
 
 ```json
 "repositories": [
@@ -15,15 +15,15 @@ Add the repository to your `composer.json` (until it is published on Packagist):
 ]
 ```
 
-Then install via composer:
+그 다음 composer를 통해 설치하세요:
 
 ```bash
 composer require socialiteproviders/amuz
 ```
 
-## Configuration
+## 설정 (Configuration)
 
-Add the following to your `config/services.php`:
+`config/services.php`에 다음 내용을 추가하세요:
 
 ```php
 'amuz' => [
@@ -33,9 +33,9 @@ Add the following to your `config/services.php`:
 ],
 ```
 
-## Usage
+## 사용법 (Usage)
 
-In your `AppServiceProvider` or `EventServiceProvider` (depending on Laravel version), add the event listener:
+`AppServiceProvider` 또는 `EventServiceProvider` (Laravel 버전에 따라 다름)에서 이벤트 리스너를 추가하세요:
 
 ```php
 use Illuminate\Support\Facades\Event;
@@ -47,25 +47,25 @@ Event::listen(function (SocialiteWasCalled $event) {
 });
 ```
 
-### Usage in Controller
+### 컨트롤러에서의 사용 (Usage in Controller)
 
 ```php
 return Socialite::driver('amuz')->redirect();
 ```
 
-### Retrieving User Data
+### 사용자 데이터 조회 (Retrieving User Data)
 
-The Amuz provider returns a custom User object with helper methods for `crew` and `manager` data:
+Amuz 제공자는 `crew`와 `manager` 데이터를 위한 도우미 메서드가 포함된 사용자 정의 User 객체를 반환합니다:
 
 ```php
 $user = Socialite::driver('amuz')->user();
 
-// Standard Socialite methods
+// 표준 Socialite 메서드
 $user->getId();
 $user->getName();
 $user->getEmail();
 
-// Amuz specific methods
+// Amuz 전용 메서드
 if ($user->isCrew()) {
     $crew = $user->getCrew();
     // $crew['team'], $crew['position']...
